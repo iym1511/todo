@@ -2,9 +2,10 @@ import { DragDropContext} from "react-beautiful-dnd";
 import { Droppable} from "react-beautiful-dnd";
 import { Draggable} from "react-beautiful-dnd";
 import ListMain from "./ListMain";
+import React from "react";
 
-const List = ({todoData, setTodoData}) => {
-
+// React.memo 랜더링 최적화
+const List = React.memo(({todoData, setTodoData, handleClick}) => {
 
       // drag drop 위치 바꿔주는 함수
       const handleEnd = (result) => {
@@ -34,7 +35,7 @@ const List = ({todoData, setTodoData}) => {
                 <Draggable key={data.id} draggableId={data.id.toString()} index={index}>
                     {(provided, snapshot) => (
                       <ListMain key={data.id} id={data.id} title={data.title} completed={data.completed} todoData={todoData}
-                      setTodoData={setTodoData} provided={provided}  // ListMain 으로 값 다 넘겨줌
+                      setTodoData={setTodoData} provided={provided} handleClick={handleClick}  // ListMain 으로 값 다 넘겨줌
                       />
                     )}
                 </Draggable>
@@ -46,7 +47,7 @@ const List = ({todoData, setTodoData}) => {
         </DragDropContext>
         </div>
     );
-}
+});
  
 export default List;
 

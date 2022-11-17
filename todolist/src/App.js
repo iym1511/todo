@@ -1,5 +1,5 @@
 
-import React, { useState} from "react";
+import React, { useCallback, useState} from "react";
 import './App.css';
 import List from './components/List';
 import Form from './components/Form';
@@ -16,7 +16,13 @@ function App() {                // ◆ List에서 받아옴
   // 값을 받아올 useState ◆ Form 에서 받아옴
   const [value, setValue] = useState("")
 
+    // 할일 filter로 지우기
+    // button onClick에서 클릭될때 받은 id와 현재 배열에있는 id 를 비교
+    const handleClick = useCallback((id) => {                                  //배열에 있는 id
+      setTodoData(todoData.filter(data => data.id !== id));
+    },[todoData]) // todoData가 바뀔때만 
 
+    
   // 할일 추가
   const handleSubmit = (e) => {
     // Submit 새로고침 막아줌 (섭밋사용시 필수)
@@ -37,16 +43,21 @@ function App() {                // ◆ List에서 받아옴
   };
 
 
+  // 전부 삭제되는 함수
+  const handleRemoveClick = () => {
+    setTodoData([])
+  }
 
     return(
       <div className='container'>
         <div className='todoBlock'>
           <div className='title'>
             <h1>할일 목록</h1>
+            <button onClick={handleRemoveClick}>전부삭제</button>
           </div>
           
           {/* 여기작성된 useState를 props로 넘겨줘서 List에서도 사용가능 */}
-        <List todoData={todoData} setTodoData={setTodoData}/>
+        <List todoData={todoData} setTodoData={setTodoData} handleClick={handleClick}/>
 
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue}/>
         
