@@ -14,7 +14,7 @@
     box-sizing: border-box;
     transition: 400ms all ease-in-out;
     cursor: pointer;
-    width: 80px;
+    width: 100px;
     z-index: 1000;
     position: absolute;
     left: 0;
@@ -24,6 +24,7 @@
     align-items: center;
     justify-content: center;
     visibility: hidden;
+
   }
   .slider__arrow-right {
     padding: 20px 0;
@@ -58,11 +59,11 @@
     visibility: visible;
   }
   .slider__arrow-left:hover {
-    background: rgba(20, 20, 20, 0.5);
+    background: #0000004d ;
     transition: 400ms all ease-in-out;
   }
   .slider__arrow-right:hover {
-    background: rgba(20, 20, 20, 0.5);
+    background: linear-gradient( to left,rgba(20, 20, 20, 0.377), #00ff0000 );
     transition: 400ms all ease-in-out;
   }
   
