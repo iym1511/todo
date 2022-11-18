@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react'
+import { useNavigate } from "react-router-dom";
 import "./Nav.css"
 
 const Nav = () => {
 
     // 네브바 아래로 스크롤시 색 변환 ----------
     const [show, setShow] = useState(false);
+    // 검색창
+    const [searchValue, setSearchValue] = useState("")
     
+    const navigate = useNavigate();
+    
+
     useEffect(()=>{
         window.addEventListener("scroll", ()=>{
             
@@ -21,6 +27,11 @@ const Nav = () => {
     })
     // ----------------------------------------
 
+    // 검색한거 찾아줌
+    const handleChange = (e) => {
+        setSearchValue(e.target.value);
+        navigate(`/search?q=${e.target.value}`);
+    }
 
     return (               //show가 true일때 클래스 실행
         <div className={`nav ${show && "nav__black"}`}>
@@ -29,6 +40,7 @@ const Nav = () => {
                 className='nav__logo'
                 onClick={() => window.location.reload()}
             />
+            <input type="text" value={searchValue} onChange={handleChange} className="nav__input" placeholder='영화를 검색해주세요'/>
             <img alt='User logged'
                 src={require(`../img/Netflix.png`)}
                 style={{width:"30px"}}

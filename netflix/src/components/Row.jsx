@@ -50,7 +50,7 @@ const Row = ({ isLargeRow, title, id, fetchUrl }) => {
             {
                 modalOpen && (
                     <MovieModal
-                    {...MovieModal,movieSelected} setModalOpen={setModalOpen}
+                    {...movieSelected} setModalOpen={setModalOpen}
                     />
                 )
                     

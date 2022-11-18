@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from "styled-components";
+
 
 const Footer = () => {
     return (  
@@ -42,7 +44,7 @@ const FooterContainer = styled.div`
 `;
 
 const FooterContent = styled.div`
-    width:500px;
+   
 `;
 const FooterLinkContainer = styled.div`
     width: 500px;
@@ -85,7 +87,7 @@ const FooterLink = styled.a`
 const FooterDescContainer = styled.div`
     margin-top: 30px
     @media(max-width: 768px){
-        margin-top: 20px
+        margin-top: 20px;
     }
 `;
 
